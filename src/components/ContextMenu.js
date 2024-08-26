@@ -17,6 +17,6 @@ const ContextMenu = ({ isOpen, position,children, left,rigth,top,bottom}) => {
         {children}
       </div>
   );
-};
+}; 
 
 export default ContextMenu;
