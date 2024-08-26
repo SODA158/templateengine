@@ -4,8 +4,9 @@ import "froala-editor/css/froala_editor.pkgd.min.css";
 import "froala-editor/js/plugins/image.min.js";
 import "froala-editor/js/plugins/table.min.js";
 import "froala-editor/js/plugins/lists.min.js";
-import "froala-editor/js/languages/ru.js"
+import "froala-editor/js/languages/ru.js";
 import $ from "jquery";
+
 window.$ = $;
 window.FroalaEditor = require("froala-editor");
 require("@wiris/mathtype-froala3");

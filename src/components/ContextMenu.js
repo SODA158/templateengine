@@ -1,22 +1,32 @@
-import React, {  useState } from 'react';
-import './css/ContextMenu.css';
+import React from "react";
+import "./css/ContextMenu.css";
 
-const ContextMenu = ({ isOpen, position,children, left,rigth,top,bottom}) => {
+const ContextMenu = ({
+  isOpen,
+  position,
+  children,
+  left,
+  rigth,
+  top,
+  bottom,
+}) => {
   if (!isOpen) return null;
 
   return (
-<div  style={{
-        position: 'absolute',
+    <div
+      style={{
+        position: "absolute",
         top: position.y,
         left: position.x,
-        backgroundColor: '#fff',
-        border: '1px solid #ccc',
-        padding: '10px',
+        backgroundColor: "#fff",
+        border: "1px solid #ccc",
+        padding: "10px",
         zIndex: 1000,
-      }}>
-        {children}
-      </div>
+      }}
+    >
+      {children}
+    </div>
   );
-}; 
+};
 
 export default ContextMenu;

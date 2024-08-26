@@ -33,7 +33,7 @@ const DocumentBody = () => {
   };
 
   const GetArias = async () => {
-    const result = await fetch("https://localhost:7180/api/Construct/Work/" + id); //API строк содержащихся в работе
+    const result = await fetch("https://localhost:7154/api/User/Work/" + id); //API строк содержащихся в работе
     if (result.ok) { // Проверка на ответ API 
       const arias = await result.json(); // Разбиение на массив
       setCount(arias.length); //Установка начального индекса
@@ -130,7 +130,7 @@ const DocumentBody = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(NewData),
       };
-      const url = "/api/Construct/SaveWork/" + id;
+      const url = "https://localhost:7154/api/User/SaveWork/" + id;
       const result = await fetch(url, option);
       if (result.ok) alert("Успешное сохранение");
       else alert("Ошибка сохранения");

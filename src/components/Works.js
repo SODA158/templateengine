@@ -8,7 +8,8 @@ import "./css/TempDes.css";
 import "./css/w3.css";
 import "./css/w3dstu.css";
 import "./css/w3pro.css";
-// import { NavLink } from "reactstrap";
+import "./css/ContextMenu.css"
+import "./css/editor.css"
 import { Link, NavLink } from "react-router-dom";
 import ContextMenu from "./ContextMenu";
 
@@ -22,7 +23,9 @@ const Works = ({ Userid }) => {
   });
 
   const GetWorks = async () => {
-    const result = await fetch("https://localhost:7180/api/Construct/" + Userid); //API строк содержащихся в работе
+    const result = await fetch(
+      "https://localhost:7154/api/User/WorksList/" + Userid
+    ); //API строк содержащихся в работе
     if (result.ok) {
       const arias = await result.json();
       const workslist = arias.map((element) => element);
@@ -38,6 +41,7 @@ const Works = ({ Userid }) => {
   useEffect(() => {
     GetWorks();
   }, []);
+
   const handleContextMenu = (e) => {
     e.preventDefault();
     setContextMenuPosition({ x: e.pageX, y: e.pageY });

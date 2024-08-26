@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./css/editor.css";
 import MyEditor from "./MyEditor";
 import {
@@ -33,18 +33,12 @@ export const MainArea = ({ row, onElementChange }) => {
         <div className="w3-container w3-margin-bottom w3-margin-top">
           <p>
             <b>{updatedRow.prefixTitle} </b>
-            {/* <input
-              placeholder="Введите название"
-              defaultValue={updatedRow.title ? updatedRow.title : null}
-              name="title"
-              onChange={(e) => handleChange(e.target.name, e.target.value)}
-            /> */}
           </p>
           <MyEditor
             config={TextFroalaConfig}
             data={updatedRow.content}
             changeElement={handleChange}
-          /> 
+          />
         </div>
       </div>
     </div>
@@ -59,18 +53,6 @@ export const Chapter = ({ row, onElementChange }) => {
     setUpdatedRow(update);
     onElementChange(update);
   };
-
-  // const ChildElementChange = (changedElement) => {
-  //   const updatedChildElement = updatedRow.child.map((childelement) =>
-  //     childelement.numberRow === changedElement.numberRow
-  //       ? changedElement
-  //       : childelement
-  //   );
-  //   const updatedElement = updatedRow;
-  //   updatedElement.child = updatedChildElement;
-  //   setUpdatedRow(updatedElement);
-  //   onElementChange(updatedRow);
-  // };
 
   return (
     <div
@@ -129,23 +111,6 @@ export const Subchapter = ({ row, onElementChange }) => {
     setUpdatedRow(update);
     onElementChange(update);
   };
-  // const changeEditor = (data) => {
-  //   const update = { ...updatedRow, content: data };
-  //   setUpdatedRow(update);
-  //   onElementChange(update);
-  // };
-
-  // const ChildElementChange = (changedElement) => {
-  //   const updatedChildElement = updatedRow.child.map((childelement) =>
-  //     childelement.numberRow === changedElement.numberRow
-  //       ? changedElement
-  //       : childelement
-  //   );
-  //   const updatedElement = updatedRow;
-  //   updatedElement.child = updatedChildElement;
-  //   setUpdatedRow(updatedElement);
-  //   onElementChange(updatedRow);
-  // };
 
   return (
     <div
@@ -243,44 +208,6 @@ export const ImageArea = ({ row, onElementChange }) => {
     </div>
   );
 };
-
-// export const ListArea = ({ row, onElementChange }) => {
-//   const [updatedRow, setUpdatedRow] = useState(row);
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     const update = { ...updatedRow, [name]: value };
-//     setUpdatedRow(update);
-//     onElementChange(update);
-//   };
-
-//   return (
-//     <div
-//       className="DropChapter w3-row-padding"
-//       draggable="true"
-//       style={{
-//         borderColor: "black",
-//         border: "solid",
-//         borderWidth: "2px",
-//         borderRadius: "15px",
-//         marginLeft: "10px",
-//       }}
-//     >
-//       <div>
-//         <div className="w3-container w3-margin-bottom w3-margin-top">
-//           <div
-//             className="Content w3-container w3-white w3-border w3-round-xlarge"
-//             style={{ backgroundColor: "#eee", minHeight: "500px" }}
-//           >
-//             <p>
-//               <b>Список</b>
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
 
 export const Table = ({ row, onElementChange }) => {
   const [updatedRow, setUpdatedRow] = useState(row);

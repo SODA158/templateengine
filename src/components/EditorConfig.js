@@ -19,24 +19,24 @@ export const TextFroalaConfig = {
   language: "ru",
   htmlAllowedTags: [".*"],
   htmlAllowedAttrs: [".*"],
-  // Allow empty tags on these next elements for proper formula rendering:
-  htmlAllowedEmptyTags: [
-    "mprescripts",
-    "none",
-    "textarea",
-    "a",
-    "iframe",
-    "object",
-    "video",
-    "style",
-    "script",
-    ".fa",
-    ".fr-emoticon",
-    ".fr-inner",
-    "path",
-    "line",
-    "hr",
-  ],
+  // // Allow empty tags on these next elements for proper formula rendering:
+  // htmlAllowedEmptyTags: [
+  //   "mprescripts",
+  //   "none",
+  //   "textarea",
+  //   "a",
+  //   "iframe",
+  //   "object",
+  //   "video",
+  //   "style",
+  //   "script",
+  //   ".fa",
+  //   ".fr-emoticon",
+  //   ".fr-inner",
+  //   "path",
+  //   "line",
+  //   "hr",
+  // ],
 };
 
 export const ImageFroalaConfig = {
@@ -49,7 +49,7 @@ export const ImageFroalaConfig = {
   imageUploadURL: null,
   imageUploadParam: "file",
   imageUploadToBase64: true,
-  imageMaxSize: 10 * 1024 * 1024, // 10MB
+  imageMaxSize: 5 * 1024 * 1024, // 5MB
   imageAllowedTypes: ["jpeg", "jpg", "png", "gif", "svg"],
   fontSizeDefaultSelection: "26",
   fontSizeSelection: true,
