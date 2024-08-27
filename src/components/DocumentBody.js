@@ -21,15 +21,16 @@ const DocumentBody = () => {
   // const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
-  const { data = [], isLoading } = useGetWorkStringsQuery();
+  // const { data = [], isLoading } = useGetWorkStringsQuery();
 
   // const [showElement, setShowElement] = useState(data[0]);
   // const [count, setCount] = useState(0);
   // const [documentChanged, setDocumentChanged] = useState(false);
+  useGetWorkStringsQuery();
   const dispatch = useDispatch();
   const elements = useSelector((state) => state.workstrings.list);
-  const showElement = useSelector((state) => state.workstrings.count);
-
+  const showElement = useSelector((state) => state.workstrings.enable);
+  const list = useSelector((state) => state.workstrings.list);
   // const { data = [], isLoading } = useGetWorkStringsQuery();
 
   // const getChildList = (parent, list) => {
@@ -103,14 +104,14 @@ const DocumentBody = () => {
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
-    dispatch(setCount(data.length));
+    // dispatch(setCount(data.length));
 
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
 
-  if (isLoading) return <div>Идет загрузка данных</div>;
+  // if (isLoading) return <div>Идет загрузка данных</div>;
   // else dispatch(setData(data));
   // const getChildList = (parent, list) => {
   //   const childdata = list
@@ -353,10 +354,10 @@ const DocumentBody = () => {
     //   </div>
     // </div>
     <>
-      {data.map((elem) => (
+      {list.map((elem) => (
         <div>{elem.numberRow}</div>
       ))}
-      <div>{showElement}</div>
+      <div>{showElement.directoryNameRow}</div>
     </>
   );
 };
