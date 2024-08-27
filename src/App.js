@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router";
 import AppRoutes from "./AppRoutes";
+import { Provider } from "react-redux";
+import { store } from "./components/store/DocumentBodyStore";
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
         return <Route key={index} {...rest} element={element} />;
       })}
     </Routes>
+      
   );
 }
 

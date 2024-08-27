@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Footer, Header } from "./components/StaticComponents";
+import { Provider } from "react-redux";
+import  store  from "./components/store/DocumentBodyStore";
 
 // const baseUrl = document.getElementsByTagName("base")[0].getAttribute("href");
 
@@ -18,7 +20,9 @@ rootHeader.render(<Header />);
 root.render(
   <StrictMode>
     <BrowserRouter basename="">
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </StrictMode>
 );

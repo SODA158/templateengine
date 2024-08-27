@@ -6,89 +6,88 @@ import {
   ListArea,
   ImageArea,
   Equation,
-  Table
+  Table,
 } from "./Areas";
+import { useSelector } from "react-redux";
 
-const EnableArea = ({ row, onElementChange }) => {
-    const [updatedRow, setUpdatedRow] = useState(row);
+const EnableArea = () => {
+  const enable = useSelector((store) => store.workstrings.enableArea);
 
-    const handleChange = (changedElement) => {
-      setUpdatedRow(changedElement);
-      onElementChange(changedElement); 
-    };
-
-
+  // const handleChange = (changedElement) => {
+  //   setUpdatedRow(changedElement);
+  //   onElementChange(changedElement);
+  // };
+  
   const GetArea = () => {
-    if (row.idDirectoryTypeRow < 5) {
+    if (enable.idDirectoryTypeRow < 5) {
       return (
         <MainArea
-          row={row}
-          key={row.numberRow} 
-          onElementChange={handleChange}
+          enable={enable}
+          key={enable.numberRow}
+          // onElementChange={handleChange}
         />
       );
     }
-    if (row.idDirectoryTypeRow === 5) {
+    if (enable.idDirectoryTypeRow === 5) {
       return (
-        <Chapter
-          row={row}
-          key={row.numberRow}
-            onElementChange={handleChange}
+        <Chapter enable={enable} key={enable.numberRow} 
+        // onElementChange={handleChange} 
         />
       );
     }
-    if (row.idDirectoryTypeRow === 6) {
+    if (enable.idDirectoryTypeRow === 6) {
       return (
         <Subchapter
-          key={row.numberRow}
-          row={row}
-          id={row.numberRow}
-          onElementChange={handleChange}
+          key={enable.numberRow}
+          enable={enable}
+          id={enable.numberRow}
+          // onElementChange={handleChange}
         />
       );
     }
-    // if (row.idDirectoryTypeRow === 7) {
+    // if (enable.idDirectoryTypeRow === 7) {
     //   return (
     //     <ListArea
-    //       key={row.numberRow}
-    //       row={row}
+    //       key={enable.numberRow}
+    //       enable={enable}
     //       id={null}
     //       onElementChange={handleChange}
     //     />
     //   );
     // }
-    if (row.idDirectoryTypeRow === 8) {
+    if (enable.idDirectoryTypeRow === 8) {
       return (
         <Table
-          key={row.numberRow}
-          row={row}
+          key={enable.numberRow}
+          enable={enable}
           id={null}
-          onElementChange={handleChange}
+          // onElementChange={handleChange}
         />
       );
     }
-    if (row.idDirectoryTypeRow === 9) {
+    if (enable.idDirectoryTypeRow === 9) {
       return (
         <ImageArea
-          key={row.numberRow}
-          row={row}
+          key={enable.numberRow}
+          enable={enable}
           id={null}
-          onElementChange={handleChange}
+          // onElementChange={handleChange}
         />
       );
     }
-    if (row.idDirectoryTypeRow === 10) {
+    if (enable.idDirectoryTypeRow === 10) {
       return (
         <Equation
-          key={row.numberRow}
-          row={row}
+          key={enable.numberRow}
+          enable={enable}
           id={null}
-          onElementChange={handleChange}
+          // onElementChange={handleChange}
         />
       );
     }
   };
-
+  
+  if(enable===null) return <div>загрузка</div>
   return GetArea();
 };
 export default EnableArea;

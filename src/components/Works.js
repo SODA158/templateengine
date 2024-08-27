@@ -8,49 +8,31 @@ import "./css/TempDes.css";
 import "./css/w3.css";
 import "./css/w3dstu.css";
 import "./css/w3pro.css";
-import "./css/ContextMenu.css"
-import "./css/editor.css"
+import "./css/ContextMenu.css";
+import "./css/editor.css";
 import { Link, NavLink } from "react-router-dom";
-import ContextMenu from "./ContextMenu";
+// import ContextMenu from "./ContextMenu";
+import { useGetWorksQuery } from "./reduxApi/WorksApi";
 
 const Works = ({ Userid }) => {
-  const [works, setWorks] = useState();
-  const [loading, setLoading] = useState(false);
-  const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
-  const [contextMenuPosition, setContextMenuPosition] = useState({
-    x: 0,
-    y: 0,
-  });
+  // const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
+  // const [contextMenuPosition, setContextMenuPosition] = useState({
+  //   x: 0,
+  //   y: 0,
+  // });
+  const { data = [], isLoading } = useGetWorksQuery(Userid);
 
-  const GetWorks = async () => {
-    const result = await fetch(
-      "https://localhost:7154/api/User/WorksList/" + Userid
-    ); //API строк содержащихся в работе
-    if (result.ok) {
-      const arias = await result.json();
-      const workslist = arias.map((element) => element);
-      setWorks(arias);
-      setLoading(true);
-      return arias;
-    }
-    setWorks();
-    setLoading(true);
-    return;
-  };
+  if (isLoading) return <div>Идет загрузка данных</div>;
 
-  useEffect(() => {
-    GetWorks();
-  }, []);
+  // const handleContextMenu = (e) => {
+  //   e.preventDefault();
+  //   setContextMenuPosition({ x: e.pageX, y: e.pageY });
+  //   setIsContextMenuOpen(true);
+  // };
 
-  const handleContextMenu = (e) => {
-    e.preventDefault();
-    setContextMenuPosition({ x: e.pageX, y: e.pageY });
-    setIsContextMenuOpen(true);
-  };
-
-  const handleCloseContextMenu = () => {
-    setIsContextMenuOpen(false);
-  };
+  // const handleCloseContextMenu = () => {
+  //   setIsContextMenuOpen(false);
+  // };
 
   const Work = ({ work }) => {
     return (
@@ -107,12 +89,9 @@ const Works = ({ Userid }) => {
       className="body"
       style={{ margin: "0px 56px 0px 56p", display: "flex" }}
     >
-      {loading ? (
-        works.map((component) => <Work work={component} key={component.id} />)
-      ) : (
-        <div>Идет загрузка данных</div>
-      )}
-      {loading ? <div style={{ textAlign: "center" }}></div> : <></>}
+      {data.map((component) => (
+        <Work work={component} key={component.id} />
+      ))}
     </div>
   );
 };
